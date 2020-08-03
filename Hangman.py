@@ -2,10 +2,10 @@ import os
 
 GUESSED_LIST = []
 
-def clearScreen():
+def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def checkGuess(list, guess):
+def check_guess(list, guess):
     for letter in list:
         if ((guess == letter) and (guess not in GUESSED_LIST)):
             GUESSED_LIST.append(guess)
@@ -40,7 +40,7 @@ def render(wrong, right, wrongLetter, rightLetter):
     print(rightLetter)
     print(wrongLetter)
 
-clearScreen()
+clear_screen()
 render(6, 0, "", "")
 solution = input("Welcome to the hangman game, please enter the word you would like to play for:\n").upper()
 letters = set(list(solution))
@@ -50,12 +50,12 @@ correctGs = 0
 winner = False
 correctLetters = "Correct Guesses:"
 incorrectLetters = "Incorrect Guesses:"
-clearScreen()
+clear_screen()
 while(tries < 6):
     render(tries, correctGs, correctLetters, incorrectLetters)
     guess = input("Which letter would you like to guess?\n").upper()
-    clearScreen()
-    flag = checkGuess(letters, guess)
+    clear_screen()
+    flag = check_guess(letters, guess)
     if flag == 1:
         print("Correct!")
         correctGs += 1
@@ -72,7 +72,7 @@ while(tries < 6):
         winner = True
         break
 
-clearScreen()
+clear_screen()
 if(winner == True):
     print("CONGRATS!!!")
 else:
